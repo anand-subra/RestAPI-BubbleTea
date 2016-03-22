@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Film
-from filmlist.quickstart.serializers import FilmSerializer
+from .models import Film, Review, User
+from filmlist.quickstart.serializers import FilmSerializer, ReviewSerializer, UserSerializer
 
 class FilmViewSet(viewsets.ModelViewSet):
     """
@@ -8,3 +8,17 @@ class FilmViewSet(viewsets.ModelViewSet):
     """
     queryset = Film.objects.all()
     serializer_class = FilmSerializer
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows reviews to be viewed or edited.
+    """
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
