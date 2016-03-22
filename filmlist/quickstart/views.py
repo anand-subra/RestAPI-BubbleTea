@@ -4,27 +4,27 @@ from filmlist.quickstart.serializers import FilmSerializer, ReviewSerializer, Us
 
 class FilmViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows films to be viewed or edited.
+    Endpoint that allows films to be viewed or edited.
 
-    GET /films/
+    GET api/v1/films/
     """
     queryset = Film.objects.all()
     serializer_class = FilmSerializer
 
 class ReviewViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows reviews to be viewed or edited.
+    Endpoint that allows reviews to be viewed or edited.
 
-    GET /reviews/
+    GET api/v1/reviews/
     """
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    Endpoint that allows users to be viewed or edited.
 
-    GET /users/
+    GET api/v1/users/
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer

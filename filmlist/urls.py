@@ -19,9 +19,9 @@ from rest_framework import routers
 from filmlist.quickstart import views
 
 router = routers.DefaultRouter()
-router.register(r'films', views.FilmViewSet)
-router.register(r'reviews', views.ReviewViewSet)
-router.register(r'users', views.UserViewSet)
+router.register(r'api/v1/films', views.FilmViewSet)
+router.register(r'api/v1/reviews', views.ReviewViewSet)
+router.register(r'api/v1/users', views.UserViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
