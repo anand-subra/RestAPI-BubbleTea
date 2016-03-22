@@ -1,30 +1,30 @@
 from rest_framework import viewsets
-from .models import Film, Review, User
-from filmlist.quickstart.serializers import FilmSerializer, ReviewSerializer, UserSerializer
+from .models import Franchise, Drink, Review
+from filmlist.quickstart.serializers import FranchiseSerializer, DrinkSerializer, ReviewSerializer
 
-class FilmViewSet(viewsets.ModelViewSet):
+class FranchiseViewSet(viewsets.ModelViewSet):
     """
-    Endpoint that allows films to be viewed or edited.
+    Endpoint that allows shops to be viewed or edited.
 
-    GET api/v1/films/
+    GET api/v1/franchises/
     """
-    queryset = Film.objects.all()
-    serializer_class = FilmSerializer
+    queryset = Franchise.objects.all()
+    serializer_class = FranchiseSerializer
+
+class DrinkViewSet(viewsets.ModelViewSet):
+    """
+    Endpoint that allows drinks to be viewed or edited.
+
+    GET api/v1/drinks/
+    """
+    queryset = Drink.objects.all()
+    serializer_class = DrinkSerializer
 
 class ReviewViewSet(viewsets.ModelViewSet):
     """
-    Endpoint that allows reviews to be viewed or edited.
+    Endpoint that allows ratings to be viewed or edited.
 
     GET api/v1/reviews/
     """
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    Endpoint that allows users to be viewed or edited.
-
-    GET api/v1/users/
-    """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
