@@ -21,7 +21,7 @@ from filmlist.quickstart import views
 router = routers.DefaultRouter()
 router.register(r'films', views.FilmViewSet)
 router.register(r'reviews', views.ReviewViewSet)
-router.register(r'user', views.UserViewSet)
+router.register(r'users', views.UserViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

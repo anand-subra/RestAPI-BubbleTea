@@ -10,7 +10,12 @@ class Film(models.Model):
     director = models.CharField(max_length=40, blank=True)
     genre = models.CharField(max_length=15, blank=True)
 
+    def __str__(self):
+        return self.title
+
 class Review(models.Model):
+    film_name = models.ForeignKey("Film", related_name='film')
+    user_name = models.ForeignKey("User", related_name='reviewer')
     date_written = models.DateTimeField(auto_now_add=True)
     heading = models.CharField(max_length=30, blank=False)
     body = models.CharField(max_length=250, blank=False)
@@ -21,3 +26,6 @@ class User(models.Model):
     age = models.IntegerField(validators=[MaxValueValidator(150), MinValueValidator(0)], blank=False)
     user_type = models.CharField(max_length=15, blank=False)
     location = models.CharField(max_length = 25, blank=True)
+
+    def __str__(self):
+        return self.username
