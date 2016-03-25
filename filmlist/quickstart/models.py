@@ -11,11 +11,16 @@ class Franchise(models.Model):
         return self.name
 
 class Drink(models.Model):
+    temperature_choices = ('Cold', 'Hot', 'Hot/Cold')
+    tea_type_choices = ('Black', 'Green')
+    tea_form_choices = ('Fruit', 'Milk', 'Special')
+
     franchise_name = models.ForeignKey("Franchise", related_name="franchise")
     name = models.CharField(max_length=50, blank=False)
     syrup_type = models.CharField(max_length=15, blank=True)
-    temperature = models.CharField(max_length=4, blank=False)
-    tea_type = models.CharField(max_length=15, blank=False)
+    temperature = models.CharField(max_length=8, blank=False, choices=temperature_choices)
+    tea_type = models.CharField(max_length=5, blank=False, choices=tea_type_choices)
+    tea_form = models.CharField(max_length=7, blank=False, choices=tea_form_choices)
     topping_type = models.CharField(max_length = 15, blank=False)
     topping_flavour = models.CharField(max_length = 25, blank=True)
 
@@ -24,6 +29,7 @@ class Drink(models.Model):
 
 class Review(models.Model):
     franchise_name = models.ForeignKey("Franchise", related_name='franchise')
+    drink_name = models.ForeignKey("Drink", related_name="drink")
     username = models.CharField(max_length=40, blank=False)
     age = models.IntegerField(validators=[MaxValueValidator(150), MinValueValidator(0)], blank=False)
     date_written = models.DateTimeField(auto_now_add=True)
