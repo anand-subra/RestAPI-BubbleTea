@@ -16,6 +16,17 @@ class FranchiseViewSet(viewsets.ModelViewSet):
     serializer_class = FranchiseSerializer
     permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly or permissions.IsAdminUser,)
 
+    def get_queryset(self):
+        qs = Franchise.objects.all()
+        searchName = self.request.query_params.get('name', None)
+        searchStyle = self.request.query_params.get('style', None)
+
+        if searchName is not None:
+            qs = qs.filter(name=searchName)
+        if searchStyle is not None:
+            qs = qs.filter(style=searchStyle)
+        return qs
+
 class DrinkViewSet(viewsets.ModelViewSet):
     """
     Endpoint that allows drinks to be viewed or edited.
