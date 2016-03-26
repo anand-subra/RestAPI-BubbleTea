@@ -11,11 +11,13 @@ Class-based views
     2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
 """
 from django.conf.urls import url, include
+#
 from rest_framework import routers
 from filmlist.quickstart import views
 
 router = routers.DefaultRouter()
 router.register(r'api/v1/franchises', views.FranchiseViewSet)
+router.register(r'api/v1/locations', views.LocationViewSet)
 router.register(r'api/v1/drinks', views.DrinkViewSet)
 router.register(r'api/v1/reviews', views.ReviewViewSet)
 

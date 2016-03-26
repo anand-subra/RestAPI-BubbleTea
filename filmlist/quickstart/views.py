@@ -1,8 +1,12 @@
 from rest_framework import viewsets
-from .models import Franchise, Drink, Review
-from filmlist.quickstart.serializers import FranchiseSerializer, DrinkSerializer, ReviewSerializer
+from rest_framework import permissions
+from django.contrib.auth.models import User
+from filmlist.quickstart.permissions import IsOwnerOrReadOnly
+from .models import Franchise, Drink, Review, Location
+from filmlist.quickstart.serializers import FranchiseSerializer, DrinkSerializer, ReviewSerializer, LocationSerializer
 
 class FranchiseViewSet(viewsets.ModelViewSet):
+    # Below is description that is returned
     """
     Endpoint that allows shops to be viewed or edited.
 
@@ -10,6 +14,7 @@ class FranchiseViewSet(viewsets.ModelViewSet):
     """
     queryset = Franchise.objects.all()
     serializer_class = FranchiseSerializer
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly or permissions.IsAdminUser,)
 
 class DrinkViewSet(viewsets.ModelViewSet):
     """
@@ -19,6 +24,7 @@ class DrinkViewSet(viewsets.ModelViewSet):
     """
     queryset = Drink.objects.all()
     serializer_class = DrinkSerializer
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly or permissions.IsAdminUser,)
 
 class ReviewViewSet(viewsets.ModelViewSet):
     """
@@ -28,3 +34,17 @@ class ReviewViewSet(viewsets.ModelViewSet):
     """
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(username=self.request.user)
+
+class LocationViewSet(viewsets.ModelViewSet):
+    """
+    Endpoint that allows locations to be viewed or edited.
+
+    GET api/v1/locations/
+    """
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly or permissions.IsAdminUser,)
