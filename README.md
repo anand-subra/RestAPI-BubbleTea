@@ -1,6 +1,6 @@
-# BubbleTea-RestAPI
+# BubbleTea - RestAPI
 
-A RESTAPI implementation of bubble tea franchises/drinks and reviewing
+A RESTAPI implementation for bubble tea context
 
 **- Credentials for a regular user:**
 Username:
