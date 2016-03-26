@@ -9,6 +9,3 @@ Password:
 **- Credentials for a superuser:**
 Username:
 Password:
-
-
-**Instructions:**
