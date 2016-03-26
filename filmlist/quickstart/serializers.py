@@ -1,6 +1,10 @@
+# Rendering of Python data tyes, model instances and querysets into JSON
 from .models import Franchise, Drink, Review, Location
 from rest_framework import serializers
 from django.contrib.auth.models import User
+
+
+# Use of hyperlinked model serialisers uses URLs as relationships between models
 
 class FranchiseSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -18,13 +22,8 @@ class DrinkSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'franchise_name', 'name', 'syrup_type', 'temperature', 'tea_type', 'tea_form', 'topping_type', 'topping_flavour')
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
+    #Set creator of review and make it read-only to avoid rewrites
     username = serializers.ReadOnlyField(source='username.username')
     class Meta:
         model = Review
         fields = ('url', 'franchise_name', 'username', 'age', 'date_written', 'heading', 'body', 'rating')
-
-    # Add models of other types
-    # e.g. add franchise details within a review:
-    #
-    # franchise = FranchiseSerializer()
-    # fields = ('url', 'franchise', 'username', 'age', 'date_written', 'heading', 'body', 'rating')

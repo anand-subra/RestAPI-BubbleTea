@@ -1,16 +1,14 @@
+#Creation of custom permissions based on rest_framework's existing permissions class
 from rest_framework import permissions
 
-
+#Edits can only be made by object owners
+#Otherwise, other users have read-only access
 class IsOwnerOrReadOnly(permissions.BasePermission):
-    """
-    Custom permission to only allow owners of an object to edit it.
-    """
 
     def has_object_permission(self, request, view, obj):
-        # Read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
+        # Read permissions granted if requests are of safe-methods types (GET, HEAD or OPTIONS)
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        # Write permissions are only allowed to the owner of the snippet.
+        # Write permission granted if object owner is also current, logged-in user
         return obj.username == request.user

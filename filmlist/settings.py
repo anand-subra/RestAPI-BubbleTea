@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
 ]
 
+# Register rest_framework variables, enable default permission classes
+# Pagination is enabled
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',),
     'PAGE_SIZE': 10
