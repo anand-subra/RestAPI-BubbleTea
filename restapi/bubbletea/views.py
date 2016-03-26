@@ -11,7 +11,7 @@ class FranchiseViewSet(viewsets.ModelViewSet):
     """
     Endpoint that allows shops to be viewed or edited.
 
-    GET api/v1/franchises/
+    e.g. GET api/v1/franchises/
     """
     # View returns all objects
     queryset = Franchise.objects.all()
@@ -36,7 +36,7 @@ class DrinkViewSet(viewsets.ModelViewSet):
     """
     Endpoint that allows drinks to be viewed or edited.
 
-    GET api/v1/drinks/
+    e.g. GET api/v1/drinks/
     """
     # View returns all objects
     queryset = Drink.objects.all()
@@ -70,7 +70,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
     """
     Endpoint that allows ratings to be viewed or edited.
 
-    GET api/v1/reviews/
+    e.g. GET api/v1/reviews/
     """
     # View returns all objects
     queryset = Review.objects.all()
@@ -102,7 +102,7 @@ class LocationViewSet(viewsets.ModelViewSet):
     """
     Endpoint that allows locations to be viewed or edited.
 
-    GET api/v1/locations/
+    e.g. GET api/v1/locations/
     """
     # View returns all objects
     queryset = Location.objects.all()

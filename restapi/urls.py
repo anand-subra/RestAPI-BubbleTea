@@ -4,7 +4,7 @@ from rest_framework import routers
 from restapi.bubbletea import views
 
 
-# Use of routers to return class viewsets, making use of "api/v1/" API URL-setting conventions
+# Use of routers to return class viewsets (endpoints), making use of "api/v1/" API URL-setting conventions
 router = routers.DefaultRouter()
 router.register(r'api/v1/franchises', views.FranchiseViewSet)
 router.register(r'api/v1/locations', views.LocationViewSet)
