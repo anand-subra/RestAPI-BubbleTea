@@ -49,13 +49,10 @@ class DrinkViewSet(viewsets.ModelViewSet):
     # e.g. http://.../api/v1/drinks?tea_type=Green
     def get_queryset(self):
         qs = Drink.objects.all()
-        searchName = self.request.query_params.get('name', None)
         searchTemperature = self.request.query_params.get('temperature', None)
         searchTeaType = self.request.query_params.get('tea_type', None)
         searchTeaForm = self.request.query_params.get('tea_form', None)
         searchFranchiseName = self.request.query_params.get('franchise_name', None)
-        if searchName is not None:
-            qs = qs.filter(name=searchName)
         if searchTemperature is not None:
             qs = qs.filter(temperature=searchTemperature)
         if searchTeaType is not None:
@@ -80,14 +77,11 @@ class ReviewViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
 
     # Queries can be made and returned by entering parameters into the URL, filtering objects accordingly
-    # e.g. http://.../api/v1/reviews?franchise_name=T4
+    # e.g. http://.../api/v1/reviews?rating=7
     def get_queryset(self):
         qs = Review.objects.all()
-        searchUsername = self.request.query_params.get('username', None)
         searchFranchiseName = self.request.query_params.get('franchise_name', None)
         searchRating = self.request.query_params.get('rating', None)
-        if searchUsername is not None:
-            qs = qs.filter(username=searchUsername)
         if searchFranchiseName is not None:
             qs = qs.filter(franchise_name=searchFranchiseName)
         if searchRating is not None:
