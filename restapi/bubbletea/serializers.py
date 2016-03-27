@@ -26,4 +26,4 @@ class ReviewSerializer(serializers.HyperlinkedModelSerializer):
     username = serializers.ReadOnlyField(source='username.username')
     class Meta:
         model = Review
-        fields = ('url', 'franchise_name', 'username', 'age', 'date_written', 'heading', 'body', 'rating')
+        fields = ('url', 'franchise_name', 'username', 'date_written', 'heading', 'body', 'rating')

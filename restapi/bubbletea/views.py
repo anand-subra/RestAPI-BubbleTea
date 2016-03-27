@@ -9,7 +9,7 @@ from restapi.bubbletea.serializers import FranchiseSerializer, DrinkSerializer, 
 class FranchiseViewSet(viewsets.ModelViewSet):
     # Below is description that is returned
     """
-    Endpoint that allows shops to be viewed or edited.
+    Endpoint for franchises
 
     e.g. GET api/v1/franchises/
     """
@@ -34,7 +34,7 @@ class FranchiseViewSet(viewsets.ModelViewSet):
 
 class DrinkViewSet(viewsets.ModelViewSet):
     """
-    Endpoint that allows drinks to be viewed or edited.
+    Endpoint for drinks
 
     e.g. GET api/v1/drinks/
     """
@@ -68,7 +68,7 @@ class DrinkViewSet(viewsets.ModelViewSet):
 
 class ReviewViewSet(viewsets.ModelViewSet):
     """
-    Endpoint that allows ratings to be viewed or edited.
+    Endpoint for reviews.
 
     e.g. GET api/v1/reviews/
     """

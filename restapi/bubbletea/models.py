@@ -31,7 +31,7 @@ class Location(models.Model):
 # (i.e. drinks can have a fruit-juice-like or milkshake-like form. Some drinks can be in smoothie form, an example of a "special" form)
 class Drink(models.Model):
     temperature_choices = ('Cold', 'Hot', 'Hot/Cold')
-    tea_type_choices = ('Black', 'Green')
+    tea_type_choices = ('Black', 'Green', 'Special')
     tea_form_choices = ('Fruit', 'Milk', 'Special')
     franchise_name = models.ForeignKey("Franchise", related_name='franchise')
     name = models.CharField(max_length=50, blank=False)
@@ -50,8 +50,7 @@ class Drink(models.Model):
 class Review(models.Model):
     franchise_name = models.ForeignKey("Franchise", related_name='franchise')
     username = models.ForeignKey('auth.User', related_name='reviews')
-    age = models.IntegerField(validators=[MaxValueValidator(150), MinValueValidator(0)], blank=True)
     date_written = models.DateTimeField(auto_now_add=True, blank=False)
-    heading = models.CharField(max_length=30, blank=False)
+    heading = models.CharField(max_length=50, blank=False)
     body = models.CharField(max_length=250, blank=False)
     rating = models.IntegerField(blank=False, validators=[MaxValueValidator(10), MinValueValidator(0)])
