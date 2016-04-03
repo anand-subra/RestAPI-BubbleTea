@@ -6,7 +6,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-
 # Automated primary key generation for franchises
 # Return name of franchise when calling object
 class Franchise(models.Model):
@@ -21,7 +20,7 @@ class Franchise(models.Model):
 # Using foreign key to link many locations to a franchise
 class Location(models.Model):
     location = models.CharField(max_length=50, blank=False)
-    franchise_name = models.ForeignKey("Franchise", related_name='franchise')
+    franchise_location = models.ForeignKey("Franchise", related_name='franchise_location', verbose_name="Franchise")
 
 
 # Automated primary key generation for drinks of franchises
@@ -33,7 +32,7 @@ class Drink(models.Model):
     temperature_choices = ('Cold', 'Hot', 'Hot/Cold')
     tea_type_choices = ('Black', 'Green', 'Special')
     tea_form_choices = ('Fruit', 'Milk', 'Special')
-    franchise_name = models.ForeignKey("Franchise", related_name='franchise')
+    franchise_drink = models.ForeignKey("Franchise", related_name='franchise_drink', verbose_name="Franchise")
     name = models.CharField(max_length=50, blank=False)
     syrup_type = models.CharField(max_length=15, blank=False)
     temperature = models.CharField(max_length=8, blank=False, choices=temperature_choices)
@@ -48,7 +47,7 @@ class Drink(models.Model):
 # timestamp (date_written) is set at time of POST-ing
 # Ratings are limited on a scale of 0-10
 class Review(models.Model):
-    franchise_name = models.ForeignKey("Franchise", related_name='franchise')
+    franchise_review = models.ForeignKey("Franchise", related_name='franchise_review', verbose_name="Franchise")
     username = models.ForeignKey('auth.User', related_name='reviews')
     date_written = models.DateTimeField(auto_now_add=True, blank=False)
     heading = models.CharField(max_length=50, blank=False)
