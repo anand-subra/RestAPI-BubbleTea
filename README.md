@@ -1,6 +1,6 @@
 # BubbleTea - RestAPI
 
-A RestAPI implementation for the bubble tea context
+A RestAPI implementation for the bubble tea context using Django Rest Framework.
 
 The API documentation can be accessed by adding `/docs` to the end of the APIroot URL
 
