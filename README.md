@@ -15,6 +15,7 @@ Endpoints to the API are as follows:
 **- Credentials for a regular user:**
 >Username: paulo
 >Password: bubbletea
+
 >Username: regularuser
 >Password: bubbletea
 
